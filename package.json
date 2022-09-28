@@ -1,0 +1,43 @@
+{
+  "name": "starfighters",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.ts",
+  "scripts": {
+    "test": "dotenv -e .env.test prisma migrate dev && dotenv -e .env.test jest",
+    "dev": "nodemon src/server.ts",
+    "build": "tsc && npx prisma generate && npx prisma migrate deploy",
+    "start": "node ./dist/src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/bcrypt": "^5.0.0",
+    "@types/cors": "^2.8.12",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.13",
+    "@types/joi": "^17.2.3",
+    "@types/jsonwebtoken": "^8.5.9",
+    "@types/node": "^18.7.14",
+    "@types/nodemon": "^1.19.2",
+    "@types/pg": "^8.6.5",
+    "prisma": "^4.3.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.3.1",
+    "axios": "^0.27.2",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-async-errors": "^3.1.1",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.19",
+    "pg": "^8.8.0"
+  }
+}
