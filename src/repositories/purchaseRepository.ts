@@ -9,7 +9,8 @@ export async function createUserCart(user_id: number){
 
 
 export async function findUserCart(user_id: number){
-    return await prisma.carts.findUnique({where: {user_id}});
+    return await prisma.carts.findFirst({where: {user_id}});
+
 }
 
 
@@ -36,4 +37,18 @@ export async function updateProductAmount(cart_id: number, product_id: number, a
 
 export async function removeWish(product_id: number, cart_id: number){
     await prisma.carts_products.deleteMany({where: {product_id, cart_id}})
+}
+
+
+
+export async function findProductsInTheCart(user_id: number){
+    const products = await prisma.$queryRaw`
+        SELECT * FROM products p
+        JOIN carts_products cp
+        ON cp.product_id = p.id
+        JOIN carts c
+        ON c.id = cp.cart_id
+        WHERE c.user_id = ${user_id}
+    `
+    return products;
 }

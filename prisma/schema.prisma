@@ -7,9 +7,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model product_types {
+  id          Int        @id @default(autoincrement())
+  name        String
+  picture_url String
+  products    products[]
+}
+
 model carts {
   id             Int              @id @default(autoincrement())
-  user_id        Int?             @unique
+  user_id        Int? @unique
   users          users?           @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   carts_products carts_products[]
 }
@@ -24,12 +31,14 @@ model carts_products {
 }
 
 model products {
-  id             Int              @id @default(autoincrement())
-  name           String
-  price          Float            @db.Real
-  barcode        String           @unique
-  product_type   types?
-  carts_products carts_products[]
+  id              Int              @id @default(autoincrement())
+  name            String
+  price           Float            @db.Real
+  barcode         String           @unique
+  picture_url     String
+  product_type_id Int?
+  product_types   product_types?   @relation(fields: [product_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  carts_products  carts_products[]
 }
 
 model users {
@@ -38,11 +47,5 @@ model users {
   email        String  @unique
   password     String
   phone_number String?
-  carts        carts?
-}
-
-enum types {
-  Latic_neos @map("Laticíneos")
-  Limpeza
-  Bebidas
+  carts        carts[]
 }

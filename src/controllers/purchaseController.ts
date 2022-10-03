@@ -21,3 +21,10 @@ export async function removeWish(req: Request, res: Response){
 
     return res.sendStatus(200);
 }
+
+
+export async function getProductsInCart(req: Request, res: Response){
+    const userId: number = res.locals.userId;
+    const products = await purchaseService.getProductsInCart(userId);
+    return res.status(200).send(products);
+}
