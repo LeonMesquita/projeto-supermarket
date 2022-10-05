@@ -9,6 +9,8 @@ const productRouter = Router();
 productRouter.get('/products', productController.getAllProducts);
 productRouter.get('/types', productController.getAllTypes);
 productRouter.get('/products/:typeId', productController.getProductsByType);
+productRouter.get('/products/name/:name', productController.getProductsByName);
+
 
 
 export default productRouter;

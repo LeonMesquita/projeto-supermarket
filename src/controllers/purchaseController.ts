@@ -28,3 +28,11 @@ export async function getProductsInCart(req: Request, res: Response){
     const products = await purchaseService.getProductsInCart(userId);
     return res.status(200).send(products);
 }
+
+
+export async function getOneProductInCart(req: Request, res: Response){
+    const userId: number = res.locals.userId;
+    const productId: number = Number(req.params.productId);
+    const products = await purchaseService.getOneProductInCart(userId, productId);
+    return res.status(200).send(products);
+}

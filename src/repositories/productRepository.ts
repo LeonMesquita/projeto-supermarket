@@ -33,3 +33,15 @@ export async function findAllTypes(){
     return types;
 }
    
+
+
+export async function findByName(name: string){
+    const products = await prisma.products.findMany({
+        where: {
+            name: {
+                contains: name
+            }
+        }
+    })
+    return products;
+}

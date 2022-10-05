@@ -29,3 +29,10 @@ export async function getProductsInCart(userId: number){
     const products = await purchaseRepository.findProductsInTheCart(userId);
     return products;
 }
+
+
+export async function getOneProductInCart(user_id: number, product_id: number){
+     const product = await purchaseRepository.findUserCartByProductId(product_id, user_id); 
+     console.log(product)
+     return product
+}

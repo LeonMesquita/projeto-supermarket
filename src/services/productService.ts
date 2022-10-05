@@ -18,3 +18,9 @@ export async function getProductsByType(typeId: number){
     console.log(products)
     return products;
 }
+
+
+export async function getProductsByName(name: string){
+    const products = await productRepository.findByName(name);
+    return products;
+}

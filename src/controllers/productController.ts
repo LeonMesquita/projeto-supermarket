@@ -21,3 +21,9 @@ export async function getProductsByType(req: Request, res: Response){
     
     return res.status(200).send(products);
 }
+
+export async function getProductsByName(req: Request, res: Response){
+    const name: string = req.params.name;
+    const products = await productService.getProductsByName(name);
+    return res.status(200).send(products)
+}

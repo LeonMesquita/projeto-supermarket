@@ -9,5 +9,7 @@ const purchaseRouter = Router();
 purchaseRouter.post('/cart/add',validateToken, validateSchema(wishSchema) , purchaseController.addInCart);
 purchaseRouter.delete('/cart/:productId', validateToken, purchaseController.removeWish);
 purchaseRouter.get('/cart/products', validateToken, purchaseController.getProductsInCart);
+purchaseRouter.get('/cart/products/:productId', validateToken, purchaseController.getOneProductInCart);
+
 
 export default purchaseRouter;
