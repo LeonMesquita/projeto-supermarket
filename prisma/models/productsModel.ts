@@ -23,14 +23,14 @@ export const productsList: Products[] = [
         price: 9.29,
         barcode: 'dcvdfvrg34tg',
         picture_url: 'https://static.paodeacucar.com/img/uploads/1/643/20247643.jpg',
-        product_type_id: 3
+        product_type_id: 5
     },
     {
         name: 'Fanta Uva 1L',
         price: 5.49,
         barcode: 'hgmjyuj6yuy54',
         picture_url: 'https://www.extrabom.com.br/uploads/produtos/350x350/5030_20170619125527_thumb_5030_RefrigeranteFantaUva1_5L.jpg',
-        product_type_id: 3
+        product_type_id: 5
     },
 
     {
@@ -38,7 +38,7 @@ export const productsList: Products[] = [
         price: 33.00,
         barcode: '234346gbhrh',
         picture_url: 'https://cf.shopee.com.br/file/8945dcdc9dfea9ab48bf0ebd75dcf319',
-        product_type_id: 3
+        product_type_id: 5
     },
 
     {

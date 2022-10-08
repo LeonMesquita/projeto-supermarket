@@ -29,3 +29,4 @@ export const productTypes: ProductType[] = [
         picture_url: 'https://www.incqs.fiocruz.br/images/stories/incqs/2018_11_21_produtos.jpg'
     },
 ]
+
