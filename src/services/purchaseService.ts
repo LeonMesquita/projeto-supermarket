@@ -21,6 +21,7 @@ export async function addInCart(userId: number, wish: wishData){
 
 export async function removeWish(userId: number, productId: number){
     const userCart = await purchaseRepository.findUserCart(userId);
+    console.log(userCart)
     await purchaseRepository.removeWish(productId, userCart!.id);
 }
 

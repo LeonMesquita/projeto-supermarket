@@ -9,7 +9,7 @@ datasource db {
 
 model product_types {
   id          Int        @id @default(autoincrement())
-  name        String
+  name        String @unique
   picture_url String
   products    products[]
 }
@@ -32,7 +32,7 @@ model carts_products {
 
 model products {
   id              Int              @id @default(autoincrement())
-  name            String
+  name            String @unique
   price           Float            @db.Real
   barcode         String           @unique
   picture_url     String
@@ -47,5 +47,37 @@ model users {
   email        String  @unique
   password     String
   phone_number String?
-  carts        carts[]
+  address_id Int?
+  address address[]
+  carts carts[]
+
 }
+
+model streets {
+  id           Int     @id @default(autoincrement())
+  name         String @unique
+  address address[]
+}
+
+model districts {
+  id           Int     @id @default(autoincrement())
+  name         String @unique
+  address address[]
+}
+
+
+
+
+model address {
+  id           Int     @id @default(autoincrement())
+  street_id Int?
+  district_id Int?
+  number Int
+  nickname String
+  streets streets? @relation(fields: [street_id], references: [id])
+  districts districts? @relation(fields: [district_id], references: [id])
+  user_id Int?
+  users users? @relation(fields: [user_id], references: [id])
+}
+
+

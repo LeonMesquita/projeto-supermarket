@@ -18,7 +18,6 @@ export async function removeWish(req: Request, res: Response){
     const userId: number = res.locals.userId;
     const productId: number = Number(req.params.productId);
     await purchaseService.removeWish(userId, productId);
-
     return res.sendStatus(200);
 }
 
