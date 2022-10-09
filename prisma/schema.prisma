@@ -50,6 +50,8 @@ model users {
   address_id Int?
   address address[]
   carts carts[]
+  purchases purchases[]
+
 
 }
 
@@ -78,6 +80,16 @@ model address {
   districts districts? @relation(fields: [district_id], references: [id])
   user_id Int?
   users users? @relation(fields: [user_id], references: [id])
+  purchases purchases[]
 }
 
 
+
+model purchases {
+  id           Int     @id @default(autoincrement())
+  total_price Float
+  address_id Int?
+  address address? @relation(fields: [address_id], references: [id])
+  user_id Int?
+  users users? @relation(fields: [user_id], references: [id])
+}

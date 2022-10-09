@@ -1,5 +1,7 @@
 import * as purchaseRepository from '../repositories/purchaseRepository';
 import {wishData} from '../interfaces/productInterface';
+import { PurchaseBody } from '../interfaces/purchaseInterface';
+
 
 export async function addInCart(userId: number, wish: wishData){
     if(wish.amount < 0) throw{type: "bad_request", message: ""}
@@ -36,4 +38,17 @@ export async function getOneProductInCart(user_id: number, product_id: number){
      const product = await purchaseRepository.findUserCartByProductId(product_id, user_id); 
      console.log(product)
      return product
+}
+
+
+
+export async function createPurchase(data: PurchaseBody){
+    console.log(data)
+    await purchaseRepository.insertPurchase(data);
+}
+
+
+export async function resetCart(userId: number){
+    const cart = await purchaseRepository.findUserCart(userId);
+    await purchaseRepository.resetCart(cart!.id);
 }

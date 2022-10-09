@@ -1,6 +1,6 @@
 import prisma from "../config/database";
 import { wishData } from "../interfaces/productInterface";
-
+import { PurchaseBody } from "../interfaces/purchaseInterface";
 
 
 export async function createUserCart(user_id: number){
@@ -51,4 +51,22 @@ export async function findProductsInTheCart(user_id: number){
         WHERE c.user_id = ${user_id}
     `
     return products;
+}
+
+
+
+
+export async function insertPurchase(data: PurchaseBody){
+    await prisma.purchases.create({data});
+}
+
+
+export async function resetCart(cart_id: number){
+    await prisma.$queryRaw`
+        DELETE FROM carts_products
+
+        WHERE cart_id = ${cart_id}
+    `
+
+    
 }

@@ -35,3 +35,23 @@ export async function getOneProductInCart(req: Request, res: Response){
     const products = await purchaseService.getOneProductInCart(userId, productId);
     return res.status(200).send(products);
 }
+
+
+export async function createPurchase(req: Request, res: Response){
+    const userId: number = res.locals.userId;
+    const purchaseBody = {
+        user_id: userId,
+        ...req.body
+    };
+    await purchaseService.createPurchase(purchaseBody);
+    return res.sendStatus(201);
+}
+
+
+export async function resetCart(req: Request, res: Response){
+    const userId: number = res.locals.userId;
+    
+
+    await purchaseService.resetCart(userId);
+    return res.sendStatus(200);
+}
