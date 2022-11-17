@@ -48,6 +48,7 @@ POST /signin
         "email": "test@gmail.com",
         "password": "12345",
     }
+    - Como resposta, o servidor retorna um Bearer Token para ser usado nas rotas autenticadas
 ```
 
 
