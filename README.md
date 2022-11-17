@@ -51,7 +51,7 @@ POST /signin
 ```
 
 
-## Compra
+## COMPRA
 ```yml 
 POST /cart/add
     - Rota para adicionar um item ao carrinho
